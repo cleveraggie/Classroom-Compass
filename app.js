@@ -1,6 +1,5 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-
 const config = window.APP_CONFIG || {};
+const createClient = window.supabase?.createClient;
 const isConfigured = config.SUPABASE_URL && config.SUPABASE_ANON_KEY &&
   !config.SUPABASE_URL.includes("YOUR_") && !config.SUPABASE_ANON_KEY.includes("YOUR_");
 const $ = (selector) => document.querySelector(selector);
@@ -527,9 +526,13 @@ function bindEvents() {
 
 async function start() {
   if (!isConfigured) { showApp(); return; }
+  showApp();
+  if (typeof createClient !== "function") {
+    showAuthMessage("The Supabase library did not load. Refresh the page or check your network connection.", true);
+    return;
+  }
   supabase = createClient(config.SUPABASE_URL, config.SUPABASE_ANON_KEY);
   bindEvents();
-  showApp();
   supabase.auth.onAuthStateChange((_event, session) => {
     void onUserChanged(session?.user || null);
   });
