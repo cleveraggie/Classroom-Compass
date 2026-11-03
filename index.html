@@ -8,25 +8,7 @@
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <div id="setupView" class="setup hidden">
-    <section class="setup-card">
-      <div class="brand-mark">✦</div><h1>Connect your database</h1>
-      <p>Before publishing, add your Supabase project URL and public anon key to <code>config.js</code>. Follow the setup steps in the README.</p>
-    </section>
-  </div>
-  <section id="authView" class="auth-shell hidden">
-    <form id="authForm" class="auth-card">
-      <div class="brand-mark">✦</div><p class="eyebrow">TEACHER WORKSPACE</p>
-      <h1 id="authTitle">Welcome back</h1>
-      <p id="authSubtitle" class="muted">Sign in to manage your classes and points.</p>
-      <label>Email<input id="authEmail" type="email" autocomplete="email" required></label>
-      <label>Password<input id="authPassword" type="password" minlength="8" autocomplete="current-password" required></label>
-      <button class="btn primary full" id="authSubmit" type="submit">Sign in</button>
-      <p class="auth-switch"><span id="authSwitchText">New teacher?</span> <button class="link-button" id="authSwitch" type="button">Create an account</button></p>
-      <div id="authMessage" class="message hidden" role="status"></div>
-    </form>
-  </section>
-  <div id="appView" class="app hidden">
+  <div id="appView" class="app">
     <aside class="sidebar">
       <div class="brand"><div class="brand-mark">✦</div><span>Classroom Merit</span></div>
       <div class="nav-label">Workspace</div>
@@ -34,7 +16,7 @@
         <button class="nav-btn active" data-tab="classes"><span>▦</span><span>Classes & attendance</span></button>
         <button class="nav-btn" data-tab="points"><span>✦</span><span>Point tracking</span></button>
       </nav>
-      <div class="side-bottom"><div id="userEmail"></div><button class="link-button light" id="signOutBtn">Sign out</button></div>
+      <div class="side-bottom">Make progress visible.<br>Celebrate effort and growth.</div>
     </aside>
     <main class="main">
       <header class="topbar"><div><div class="eyebrow">TEACHER WORKSPACE</div><h1 id="pageTitle">Classes & attendance</h1></div><div class="date-pill" id="todayLabel"></div></header>
@@ -68,8 +50,6 @@
   </div>
   <dialog id="formDialog" class="dialog"><form method="dialog" id="dialogForm"><div class="dialog-heading"><div><h2 id="dialogTitle"></h2><p id="dialogSubtitle"></p></div><button class="icon-button" type="button" id="dialogClose" aria-label="Close">×</button></div><div id="dialogBody"></div><div class="dialog-actions"><button class="btn secondary" type="button" id="dialogCancel">Cancel</button><button class="btn primary" id="dialogSave" type="submit">Save</button></div><div id="dialogMessage" class="message hidden"></div></form></dialog>
   <div id="toast" class="toast" role="status"></div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./config.js"></script>
-  <script type="module" src="./app.js"></script>
+  <script src="./app.js" defer></script>
 </body>
 </html>
